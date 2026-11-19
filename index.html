@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Review mọi thứ - khám phá sản phẩm hay, deal đáng thử và mua sắm thông minh.">
+<title>Review mọi thứ | Chọn đúng món, mua đúng giá</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--blue:#315cf5;--line:#e8ebf2;--bg:#f7f8fc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}
+.wrap{max-width:1120px;margin:auto;padding:0 22px}
+header{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;width:100%;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:19px;letter-spacing:-.5px}
+.logo{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,#315cf5,#56b8ff);display:grid;place-items:center;color:white;font-weight:900}
+.navsmall{font-size:13px;color:var(--muted)}
+.hero{margin:28px auto 34px;border-radius:26px;padding:48px 42px;background:linear-gradient(115deg,#142451,#2455dc 65%,#43b9ed);color:white;position:relative;overflow:hidden}
+.hero:after{content:"🛍️";position:absolute;right:7%;top:20px;font-size:130px;opacity:.15;transform:rotate(-12deg)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;opacity:.8}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.06;letter-spacing:-2px;margin:15px 0 14px;max-width:600px}
+.hero p{max-width:510px;line-height:1.7;color:#e2eaff;margin:0 0 24px}
+.primary{display:inline-flex;background:white;color:#2349c9;padding:12px 18px;border-radius:12px;font-weight:800;font-size:14px}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 16px}
+h2{font-size:23px;letter-spacing:-.7px;margin:0}
+.sub{font-size:13px;color:var(--muted);margin-top:5px}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}
+.chip{white-space:nowrap;border:1px solid var(--line);background:white;padding:9px 14px;border-radius:30px;font-size:13px;cursor:pointer}
+.chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.searchrow{display:flex;gap:10px;margin:7px 0 19px}
+.search{width:100%;border:1px solid var(--line);background:white;border-radius:12px;padding:13px 15px;outline:none}
+.search:focus,input:focus,select:focus{border-color:#7792ff;box-shadow:0 0 0 3px #315cf51a}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s;min-width:0}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #182b5412}
+.photo{height:190px;background:#eef1fa;display:grid;place-items:center;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .emoji{font-size:56px}
+.tag{position:absolute;top:12px;left:12px;background:#ffffffed;border-radius:30px;padding:6px 10px;font-size:11px;font-weight:750}
+.info{padding:15px}
+.info h3{font-size:15px;line-height:1.4;margin:0 0 9px;min-height:42px}
+.price{font-size:17px;color:#e65b35;font-weight:850;margin-bottom:13px}
+.actions{display:flex;gap:8px}
+.buy{flex:1;text-align:center;border-radius:9px;padding:10px 5px;background:#ee4d2d;color:white;font-size:12px;font-weight:800}
+.buy.tiktok{background:#171717}
+.empty{display:none;text-align:center;padding:45px 15px;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:15px}
+.about{margin:45px 0 24px;background:#eef2ff;border-radius:20px;padding:25px}
+.about h2{font-size:20px}.about p{color:#59647b;line-height:1.7;margin-bottom:0;font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 35px;line-height:1.8}
+.admin{margin:28px 0 10px;border:1px solid var(--line);border-radius:17px;background:white;padding:20px}
+.admin summary{font-weight:800;cursor:pointer}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.formgrid input,.formgrid select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;min-width:0}
+.formgrid .wide{grid-column:1/-1}
+.add{border:0;border-radius:10px;background:var(--blue);color:white;font-weight:800;padding:12px;cursor:pointer}
+.note{font-size:12px;color:var(--muted);line-height:1.6}
+.delete{display:block;margin-top:10px;color:#b42318;background:none;border:0;padding:0;font-size:12px;cursor:pointer}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:34px 24px}.hero:after{right:-20px;font-size:95px}.photo{height:150px}}
+@media(max-width:480px){.wrap{padding:0 15px}.navsmall{display:none}.grid{gap:10px}.photo{height:125px}.info{padding:11px}.info h3{font-size:13px}.price{font-size:15px}.buy{font-size:11px}.hero{margin-top:17px;border-radius:19px}.formgrid{grid-template-columns:1fr}.formgrid .wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="#"><span class="logo">R</span><span>Review mọi thứ</span></a><span class="navsmall">Chọn đúng món · Mua đúng giá</span></div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">WELCOME TO REVIEW MỌI THỨ</div><h1>Mua sắm thông minh<br>hơn mỗi ngày!</h1><p>Khám phá những món đồ thú vị, sản phẩm đáng thử và deal hấp dẫn. Xem kỹ trước khi quyết định mua.</p><a class="primary" href="#san-pham">Khám phá sản phẩm ↓</a></section>
+<section id="san-pham">
+ <div class="sectionhead"><div><h2>🔥 Sản phẩm nổi bật</h2><div class="sub">Những món đồ đáng để bạn khám phá</div></div><span class="sub" id="count"></span></div>
+ <div class="filters" id="filters">
+  <button class="chip active" data-cat="Tất cả">✨ Tất cả</button><button class="chip" data-cat="Công nghệ">📱 Công nghệ</button><button class="chip" data-cat="Gia dụng">🏠 Gia dụng</button><button class="chip" data-cat="Làm đẹp">💄 Làm đẹp</button><button class="chip" data-cat="Đời sống">🎒 Đời sống</button>
+ </div>
+ <div class="searchrow"><input id="search" class="search" placeholder="🔍 Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm"></div>
+ <div class="grid" id="grid"></div><div class="empty" id="empty">Chưa tìm thấy sản phẩm phù hợp.</div>
+</section>
+<section class="about"><h2>💙 Review có tâm</h2><p>Review mọi thứ là nơi tổng hợp những sản phẩm thú vị, tiện ích và đáng cân nhắc. Hãy xem thông tin sản phẩm và điều kiện bán hàng trên nền tảng trước khi đặt mua.</p></section>
+<details class="admin"><summary>⚙️ Quản lý sản phẩm — thêm sản phẩm Affiliate</summary>
+ <form id="productForm" class="formgrid">
+  <input id="name" required placeholder="Tên sản phẩm">
+  <input id="price" required placeholder="Giá tham khảo (VD: 199.000đ)">
+  <select id="category"><option>Công nghệ</option><option>Gia dụng</option><option>Làm đẹp</option><option>Đời sống</option></select>
+  <select id="platform"><option value="shopee">Shopee</option><option value="tiktok">TikTok Shop</option></select>
+  <input id="image" class="wide" type="url" placeholder="Link ảnh sản phẩm (URL https://...)">
+  <input id="link" class="wide" type="url" required placeholder="Link Affiliate Shopee hoặc TikTok (URL https://...)">
+  <button class="add wide" type="submit">＋ Thêm sản phẩm</button>
+ </form>
+ <p class="note">Sản phẩm bạn thêm được lưu trong trình duyệt này (localStorage). Muốn mọi người cùng thấy sản phẩm, bạn cần cập nhật danh sách trong mã nguồn rồi triển khai lại website. Các sản phẩm mẫu bên dưới chỉ là ví dụ, giá và ảnh cần được kiểm tra/cập nhật.</p>
+</details>
+</main>
+<footer><b>REVIEW MỌI THỨ</b><br>Chia sẻ trải nghiệm · Kết nối mua sắm<br>Các liên kết mua hàng có thể là liên kết tiếp thị liên kết (Affiliate).<br>© 2026 Review mọi thứ</footer>
+<script>
+const defaults=[
+{name:"Tai nghe Bluetooth không dây",price:"299.000đ",cat:"Công nghệ",emoji:"🎧",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700",link:"https://shopee.vn/search?keyword=tai%20nghe%20bluetooth",platform:"shopee"},
+{name:"Đồng hồ thông minh",price:"459.000đ",cat:"Công nghệ",emoji:"⌚",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",link:"https://shopee.vn/search?keyword=dong%20ho%20thong%20minh",platform:"shopee"},
+{name:"Đèn trang trí phòng ngủ",price:"159.000đ",cat:"Gia dụng",emoji:"💡",image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700",link:"https://shopee.vn/search?keyword=den%20ngu",platform:"shopee"},
+{name:"Máy chăm sóc da",price:"199.000đ",cat:"Làm đẹp",emoji:"✨",image:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=700",link:"https://shopee.vn/search?keyword=may%20cham%20soc%20da",platform:"shopee"},
+{name:"Balo thời trang",price:"229.000đ",cat:"Đời sống",emoji:"🎒",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",link:"https://shopee.vn/search?keyword=balo%20thoi%20trang",platform:"shopee"},
+{name:"Bình giữ nhiệt",price:"99.000đ",cat:"Đời sống",emoji:"🥤",image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=700",link:"https://shopee.vn/search?keyword=binh%20giu%20nhiet",platform:"shopee"}
+];
+let custom=[];try{custom=JSON.parse(localStorage.getItem("rmt-products")||"[]")}catch(e){}
+let category="Tất cả";
+const $=id=>document.getElementById(id);
+function safeUrl(value){try{const u=new URL(value);return ["https:","http:"].includes(u.protocol)?u.href:"#"}catch(e){return "#"}}
+function render(){
+ const q=$("search").value.trim().toLocaleLowerCase("vi");
+ const all=[...custom,...defaults];
+ const shown=all.filter(p=>(category==="Tất cả"||p.cat===category)&&p.name.toLocaleLowerCase("vi").includes(q));
+ $("count").textContent=shown.length+" sản phẩm";
+ $("empty").style.display=shown.length?"none":"block";
+ $("grid").innerHTML=shown.map(p=>`<article class="card"><div class="photo">${p.image?`<img src="${safeUrl(p.image)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class=&quot;emoji&quot;>🛍️</span>')">`:`<span class="emoji">${p.emoji||"🛍️"}</span>`}<span class="tag">${escapeHtml(p.cat)}</span></div><div class="info"><h3>${escapeHtml(p.name)}</h3><div class="price">${escapeHtml(p.price)}</div><div class="actions"><a class="buy ${p.platform==="tiktok"?"tiktok":""}" href="${safeUrl(p.link)}" target="_blank" rel="noopener noreferrer">Mua trên ${p.platform==="tiktok"?"TikTok":"Shopee"} ↗</a></div></div></article>`).join("");
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("filters").addEventListener("click",e=>{const b=e.target.closest("button[data-cat]");if(!b)return;category=b.dataset.cat;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));render()});
+$("search").addEventListener("input",render);
+$("productForm").addEventListener("submit",e=>{
+ e.preventDefault();const link=safeUrl($("link").value),image=$("image").value?safeUrl($("image").value):"";
+ if(link==="#"||($("image").value&&image==="#")){alert("Vui lòng nhập URL hợp lệ bắt đầu bằng https://");return}
+ const p={name:$("name").value.trim(),price:$("price").value.trim(),cat:$("category").value,platform:$("platform").value,image,link};
+ custom.unshift(p);localStorage.setItem("rmt-products",JSON.stringify(custom));e.target.reset();render();alert("Đã thêm sản phẩm vào trình duyệt này!");
+});
+render();
+</script>
+</body></html>
